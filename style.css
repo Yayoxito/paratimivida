@@ -1,0 +1,519 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(
+        to bottom,
+        #090b24 0%,
+        #151943 45%,
+        #29204c 70%,
+        #10131f 100%
+    );
+    color: white;
+}
+
+/* =========================
+   ESTRELLAS
+========================= */
+
+.stars,
+.stars::before,
+.stars::after {
+    position: absolute;
+    content: "";
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+}
+
+.stars {
+    top: 12%;
+    left: 15%;
+    box-shadow:
+        80px 20px white,
+        170px 70px white,
+        280px -20px white,
+        400px 50px white,
+        520px 10px white,
+        650px 80px white,
+        780px 30px white,
+        900px 100px white,
+        1030px 40px white,
+        1150px 90px white,
+        70px 180px white,
+        300px 150px white,
+        580px 180px white,
+        850px 160px white,
+        1100px 200px white;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================
+   ESCENA
+========================= */
+
+.garden {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+/* =========================
+   MENSAJE
+========================= */
+
+.message {
+    position: absolute;
+    z-index: 10;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(650px, 90%);
+    text-align: center;
+    animation: appear 2s ease forwards;
+}
+
+.small-text {
+    color: #ffd966;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.message h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: #ffe56b;
+    text-shadow: 0 0 20px rgba(255, 218, 77, .5);
+    margin-bottom: 15px;
+}
+
+.message p:not(.small-text) {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #f5f5f5;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+#loveButton {
+    margin-top: 25px;
+    padding: 13px 25px;
+    border-radius: 30px;
+    background: #ffd83d;
+    color: #302300;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(255, 216, 61, .35);
+    transition: .3s;
+}
+
+#loveButton:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(255, 216, 61, .7);
+}
+
+/* =========================
+   SUELO
+========================= */
+
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 22%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            #173b1c 0%,
+            #102a16 60%,
+            #09150d 100%
+        );
+    border-radius: 50% 50% 0 0;
+}
+
+/* =========================
+   FLORES
+========================= */
+
+.flowers {
+    position: absolute;
+    bottom: 8%;
+    width: 100%;
+    height: 55%;
+}
+
+.flower {
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+    height: 300px;
+    transform-origin: bottom center;
+    animation: sway 4s ease-in-out infinite;
+}
+
+.flower-1 {
+    left: 8%;
+    transform: scale(.8);
+    animation-delay: -.5s;
+}
+
+.flower-2 {
+    left: 27%;
+    transform: scale(1.05);
+    animation-delay: -2s;
+}
+
+.flower-3 {
+    left: 46%;
+    transform: scale(1.2);
+    animation-delay: -1s;
+}
+
+.flower-4 {
+    right: 27%;
+    transform: scale(.95);
+    animation-delay: -3s;
+}
+
+.flower-5 {
+    right: 8%;
+    transform: scale(.75);
+    animation-delay: -1.5s;
+}
+
+/* Tallo */
+
+.stem {
+    position: absolute;
+    bottom: 0;
+    left: 58px;
+    width: 8px;
+    height: 230px;
+    background: linear-gradient(
+        to right,
+        #174c1c,
+        #3f8f37,
+        #174c1c
+    );
+    border-radius: 10px;
+    transform-origin: bottom;
+    animation: grow 2s ease-out forwards;
+}
+
+/* Hojas */
+
+.leaf {
+    position: absolute;
+    width: 70px;
+    height: 30px;
+    background: linear-gradient(
+        135deg,
+        #4d9e3e,
+        #1b5b22
+    );
+    border-radius: 100% 0 100% 0;
+}
+
+.leaf-left {
+    bottom: 80px;
+    left: 0;
+    transform: rotate(-25deg);
+}
+
+.leaf-right {
+    bottom: 130px;
+    right: 0;
+    transform: rotate(205deg);
+}
+
+/* =========================
+   CABEZA DE LA FLOR
+========================= */
+
+.flower-head {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    transform: translateX(-50%);
+}
+
+.petal {
+    position: absolute;
+    left: 35px;
+    top: 35px;
+    width: 50px;
+    height: 75px;
+    background: linear-gradient(
+        135deg,
+        #fff06a,
+        #f7c51f
+    );
+    border-radius: 50%;
+    transform-origin: 25px 25px;
+    box-shadow: 0 0 15px rgba(255, 214, 43, .4);
+}
+
+.p1 {
+    transform: rotate(0deg) translateY(-32px);
+}
+
+.p2 {
+    transform: rotate(60deg) translateY(-32px);
+}
+
+.p3 {
+    transform: rotate(120deg) translateY(-32px);
+}
+
+.p4 {
+    transform: rotate(180deg) translateY(-32px);
+}
+
+.p5 {
+    transform: rotate(240deg) translateY(-32px);
+}
+
+.p6 {
+    transform: rotate(300deg) translateY(-32px);
+}
+
+.center {
+    position: absolute;
+    left: 35px;
+    top: 35px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #7b4c08,
+        #3c2605
+    );
+    box-shadow:
+        inset 0 0 10px #1f1300,
+        0 0 10px rgba(255, 200, 0, .3);
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes grow {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 230px;
+    }
+}
+
+@keyframes sway {
+    0%, 100% {
+        rotate: -2deg;
+    }
+
+    50% {
+        rotate: 2deg;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.letter {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(5, 6, 20, .75);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+}
+
+.letter.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.letter-content {
+    position: relative;
+    width: min(600px, 90%);
+    padding: 45px;
+    border-radius: 25px;
+    background: linear-gradient(
+        145deg,
+        #fffdf0,
+        #fff4bd
+    );
+    color: #3d310c;
+    box-shadow:
+        0 20px 80px rgba(0, 0, 0, .5),
+        0 0 40px rgba(255, 216, 61, .2);
+    transform: scale(.8);
+    transition: .5s;
+}
+
+.letter.show .letter-content {
+    transform: scale(1);
+}
+
+.close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    background: none;
+    font-size: 30px;
+    color: #725c14;
+}
+
+.heart {
+    font-size: 45px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.letter h2 {
+    text-align: center;
+    color: #c79b00;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.letter p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.final-message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem !important;
+    color: #bd8d00;
+}
+
+/* =========================
+   CORAZONES
+========================= */
+
+.little-heart {
+    position: fixed;
+    z-index: 200;
+    pointer-events: none;
+    font-size: 25px;
+    animation: fly 2s ease-out forwards;
+}
+
+@keyframes fly {
+    0% {
+        transform: translateY(0) scale(.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                calc(-100px + 200px * var(--x)),
+                -250px
+            )
+            scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 700px) {
+
+    .message {
+        top: 5%;
+    }
+
+    .message h1 {
+        font-size: 2.2rem;
+    }
+
+    .message p:not(.small-text) {
+        font-size: .95rem;
+    }
+
+    .flower {
+        width: 80px;
+        height: 230px;
+    }
+
+    .flower-head {
+        transform: translateX(-50%) scale(.7);
+    }
+
+    .stem {
+        left: 38px;
+        height: 180px;
+    }
+
+    .flower-1 {
+        left: -5%;
+    }
+
+    .flower-2 {
+        left: 18%;
+    }
+
+    .flower-3 {
+        left: 40%;
+    }
+
+    .flower-4 {
+        right: 15%;
+    }
+
+    .flower-5 {
+        right: -5%;
+    }
+
+    .letter-content {
+        padding: 30px 25px;
+    }
+}
