@@ -4,60 +4,104 @@
     box-sizing: border-box;
 }
 
+html,
 body {
-    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+body {
     overflow: hidden;
-    font-family: "Segoe UI", sans-serif;
-    background: linear-gradient(
-        to bottom,
-        #090b24 0%,
-        #151943 45%,
-        #29204c 70%,
-        #10131f 100%
-    );
+    font-family: "Poppins", sans-serif;
+    background: #07091c;
     color: white;
 }
 
-/* =========================
-   ESTRELLAS
-========================= */
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
 
-.stars,
-.stars::before,
-.stars::after {
-    position: absolute;
+
+/* =========================================
+   PANTALLA DE INICIO
+========================================= */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #24204d 0%,
+            #11142f 35%,
+            #07091c 75%
+        );
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+.intro.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* Estrellas */
+
+.intro-stars::before,
+.intro-stars::after {
     content: "";
+
+    position: absolute;
+
     width: 3px;
     height: 3px;
+
     background: white;
     border-radius: 50%;
-}
 
-.stars {
-    top: 12%;
-    left: 15%;
     box-shadow:
-        80px 20px white,
-        170px 70px white,
-        280px -20px white,
-        400px 50px white,
-        520px 10px white,
-        650px 80px white,
-        780px 30px white,
-        900px 100px white,
-        1030px 40px white,
-        1150px 90px white,
-        70px 180px white,
-        300px 150px white,
-        580px 180px white,
-        850px 160px white,
-        1100px 200px white;
-    animation: twinkle 3s infinite alternate;
+        10vw 12vh white,
+        18vw 28vh white,
+        27vw 8vh white,
+        34vw 22vh white,
+        43vw 13vh white,
+        52vw 30vh white,
+        61vw 9vh white,
+        70vw 25vh white,
+        78vw 13vh white,
+        88vw 32vh white,
+        95vw 18vh white,
+        15vw 65vh white,
+        25vw 55vh white,
+        40vw 70vh white,
+        65vw 60vh white,
+        80vw 72vh white,
+        92vw 55vh white;
+
+    animation: starsTwinkle 3s infinite alternate;
 }
 
-@keyframes twinkle {
+.intro-stars::after {
+    opacity: .4;
+    transform: scale(.6);
+    animation-delay: 1s;
+}
+
+@keyframes starsTwinkle {
+
     from {
-        opacity: .3;
+        opacity: .2;
     }
 
     to {
@@ -65,285 +109,264 @@ body {
     }
 }
 
-/* =========================
-   ESCENA
-========================= */
 
-.garden {
+/* Contenido */
+
+.intro-content {
     position: relative;
-    width: 100%;
-    height: 100vh;
-}
+    z-index: 2;
 
-/* =========================
-   MENSAJE
-========================= */
-
-.message {
-    position: absolute;
-    z-index: 10;
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(650px, 90%);
     text-align: center;
-    animation: appear 2s ease forwards;
+
+    width: min(600px, 90%);
+
+    animation: introAppear 2s ease forwards;
 }
 
-.small-text {
-    color: #ffd966;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
+@keyframes introAppear {
 
-.message h1 {
-    font-size: clamp(2rem, 5vw, 4rem);
-    color: #ffe56b;
-    text-shadow: 0 0 20px rgba(255, 218, 77, .5);
-    margin-bottom: 15px;
-}
-
-.message p:not(.small-text) {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #f5f5f5;
-}
-
-button {
-    border: none;
-    cursor: pointer;
-}
-
-#loveButton {
-    margin-top: 25px;
-    padding: 13px 25px;
-    border-radius: 30px;
-    background: #ffd83d;
-    color: #302300;
-    font-size: 1rem;
-    font-weight: bold;
-    box-shadow: 0 0 20px rgba(255, 216, 61, .35);
-    transition: .3s;
-}
-
-#loveButton:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 30px rgba(255, 216, 61, .7);
-}
-
-/* =========================
-   SUELO
-========================= */
-
-.ground {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 22%;
-    background:
-        radial-gradient(
-            ellipse at center,
-            #173b1c 0%,
-            #102a16 60%,
-            #09150d 100%
-        );
-    border-radius: 50% 50% 0 0;
-}
-
-/* =========================
-   FLORES
-========================= */
-
-.flowers {
-    position: absolute;
-    bottom: 8%;
-    width: 100%;
-    height: 55%;
-}
-
-.flower {
-    position: absolute;
-    bottom: 0;
-    width: 120px;
-    height: 300px;
-    transform-origin: bottom center;
-    animation: sway 4s ease-in-out infinite;
-}
-
-.flower-1 {
-    left: 8%;
-    transform: scale(.8);
-    animation-delay: -.5s;
-}
-
-.flower-2 {
-    left: 27%;
-    transform: scale(1.05);
-    animation-delay: -2s;
-}
-
-.flower-3 {
-    left: 46%;
-    transform: scale(1.2);
-    animation-delay: -1s;
-}
-
-.flower-4 {
-    right: 27%;
-    transform: scale(.95);
-    animation-delay: -3s;
-}
-
-.flower-5 {
-    right: 8%;
-    transform: scale(.75);
-    animation-delay: -1.5s;
-}
-
-/* Tallo */
-
-.stem {
-    position: absolute;
-    bottom: 0;
-    left: 58px;
-    width: 8px;
-    height: 230px;
-    background: linear-gradient(
-        to right,
-        #174c1c,
-        #3f8f37,
-        #174c1c
-    );
-    border-radius: 10px;
-    transform-origin: bottom;
-    animation: grow 2s ease-out forwards;
-}
-
-/* Hojas */
-
-.leaf {
-    position: absolute;
-    width: 70px;
-    height: 30px;
-    background: linear-gradient(
-        135deg,
-        #4d9e3e,
-        #1b5b22
-    );
-    border-radius: 100% 0 100% 0;
-}
-
-.leaf-left {
-    bottom: 80px;
-    left: 0;
-    transform: rotate(-25deg);
-}
-
-.leaf-right {
-    bottom: 130px;
-    right: 0;
-    transform: rotate(205deg);
-}
-
-/* =========================
-   CABEZA DE LA FLOR
-========================= */
-
-.flower-head {
-    position: absolute;
-    top: 5px;
-    left: 50%;
-    width: 120px;
-    height: 120px;
-    transform: translateX(-50%);
-}
-
-.petal {
-    position: absolute;
-    left: 35px;
-    top: 35px;
-    width: 50px;
-    height: 75px;
-    background: linear-gradient(
-        135deg,
-        #fff06a,
-        #f7c51f
-    );
-    border-radius: 50%;
-    transform-origin: 25px 25px;
-    box-shadow: 0 0 15px rgba(255, 214, 43, .4);
-}
-
-.p1 {
-    transform: rotate(0deg) translateY(-32px);
-}
-
-.p2 {
-    transform: rotate(60deg) translateY(-32px);
-}
-
-.p3 {
-    transform: rotate(120deg) translateY(-32px);
-}
-
-.p4 {
-    transform: rotate(180deg) translateY(-32px);
-}
-
-.p5 {
-    transform: rotate(240deg) translateY(-32px);
-}
-
-.p6 {
-    transform: rotate(300deg) translateY(-32px);
-}
-
-.center {
-    position: absolute;
-    left: 35px;
-    top: 35px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        #7b4c08,
-        #3c2605
-    );
-    box-shadow:
-        inset 0 0 10px #1f1300,
-        0 0 10px rgba(255, 200, 0, .3);
-}
-
-/* =========================
-   ANIMACIONES
-========================= */
-
-@keyframes grow {
     from {
-        height: 0;
+        opacity: 0;
+        transform: translateY(30px);
     }
 
     to {
-        height: 230px;
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@keyframes sway {
-    0%, 100% {
-        rotate: -2deg;
+
+/* Corazón */
+
+.intro-heart {
+    font-family: serif;
+
+    font-size: 100px;
+
+    color: #ffd84d;
+
+    text-shadow:
+        0 0 20px rgba(255, 216, 77, .4),
+        0 0 50px rgba(255, 216, 77, .2);
+
+    animation: heartBeat 2s infinite;
+}
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
     }
 
     50% {
-        rotate: 2deg;
+        transform: scale(1.12);
     }
 }
 
-@keyframes appear {
+
+/* Textos */
+
+.intro-small {
+    margin-top: 5px;
+
+    color: #e7dca7;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+.intro h1 {
+    margin-top: 10px;
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: clamp(4rem, 10vw, 7rem);
+
+    font-weight: 700;
+
+    color: #ffe477;
+
+    text-shadow:
+        0 0 20px rgba(255, 220, 90, .35);
+}
+
+.intro-description {
+    margin-top: 5px;
+
+    color: #d5d5df;
+
+    font-size: 16px;
+}
+
+
+/* Botón */
+
+#startButton {
+    margin-top: 35px;
+
+    padding: 15px 30px;
+
+    border: 1px solid rgba(255, 220, 100, .5);
+
+    border-radius: 50px;
+
+    background: rgba(255, 216, 61, .12);
+
+    color: #ffe477;
+
+    font-size: 16px;
+
+    transition: .4s;
+
+    box-shadow:
+        0 0 20px rgba(255, 216, 61, .1);
+}
+
+#startButton span {
+    margin-left: 8px;
+}
+
+#startButton:hover {
+    transform: translateY(-4px) scale(1.04);
+
+    background: rgba(255, 216, 61, .2);
+
+    box-shadow:
+        0 0 30px rgba(255, 216, 61, .3);
+}
+
+.tap-message {
+    margin-top: 18px;
+
+    color: #777b9d;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   PANTALLA PRINCIPAL
+========================================= */
+
+.main {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #080a21 0%,
+            #101537 35%,
+            #29234b 65%,
+            #10151b 100%
+        );
+
+    transition: opacity 2s ease;
+}
+
+.main.visible {
+    opacity: 1;
+}
+
+
+/* =========================================
+   LUNA
+========================================= */
+
+.moon {
+    position: absolute;
+
+    top: 8%;
+    right: 12%;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffde5,
+            #fff4b0 60%,
+            #e9d982
+        );
+
+    box-shadow:
+        0 0 30px rgba(255, 244, 176, .3),
+        0 0 90px rgba(255, 244, 176, .15);
+}
+
+
+/* =========================================
+   ESTRELLAS
+========================================= */
+
+.stars::before,
+.stars::after {
+    content: "";
+
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        7vw 12vh white,
+        14vw 25vh white,
+        22vw 8vh white,
+        30vw 18vh white,
+        38vw 7vh white,
+        46vw 24vh white,
+        54vw 11vh white,
+        63vw 28vh white,
+        72vw 15vh white,
+        82vw 8vh white,
+        91vw 26vh white;
+
+    animation: starsTwinkle 4s infinite alternate;
+}
+
+
+/* =========================================
+   MENSAJE PRINCIPAL
+========================================= */
+
+.main-message {
+    position: absolute;
+
+    z-index: 10;
+
+    top: 8%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(700px, 90%);
+
+    text-align: center;
+
+    animation: messageAppear 2s ease 1s both;
+}
+
+@keyframes messageAppear {
+
     from {
         opacity: 0;
-        transform: translate(-50%, -20px);
+        transform: translate(-50%, -30px);
     }
 
     to {
@@ -352,168 +375,732 @@ button {
     }
 }
 
-/* =========================
-   CARTA
-========================= */
+.pre-title {
+    color: #d8c879;
 
-.letter {
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+.main-message h1 {
+    margin-top: 8px;
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: clamp(3rem, 6vw, 5rem);
+
+    line-height: .95;
+
+    color: #ffe477;
+
+    text-shadow:
+        0 0 25px rgba(255, 216, 61, .3);
+}
+
+.description {
+    margin: 18px auto 0;
+
+    max-width: 500px;
+
+    color: #d8d8e3;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   JARDÍN
+========================================= */
+
+.garden {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 62%;
+}
+
+
+/* =========================================
+   PASTO
+========================================= */
+
+.grass {
+    position: absolute;
+
+    bottom: -10%;
+
+    left: -5%;
+
+    width: 110%;
+    height: 28%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #214923 0%,
+            #102d18 65%,
+            #09160e 100%
+        );
+
+    border-radius: 50% 50% 0 0;
+
+    box-shadow:
+        0 -10px 40px rgba(0, 0, 0, .2);
+}
+
+
+/* =========================================
+   FLORES
+========================================= */
+
+.flower {
+    position: absolute;
+
+    bottom: 8%;
+
+    width: 130px;
+    height: 330px;
+
+    transform-origin: bottom center;
+
+    opacity: 0;
+
+    animation:
+        flowerAppear 1.5s ease forwards,
+        sway 5s ease-in-out infinite 1.5s;
+}
+
+
+/* Posiciones */
+
+.flower-1 {
+    left: 5%;
+
+    transform: scale(.75);
+
+    animation-delay: 1.5s, 3s;
+}
+
+.flower-2 {
+    left: 24%;
+
+    transform: scale(.95);
+
+    animation-delay: 2s, 3.5s;
+}
+
+.flower-3 {
+    left: 43%;
+
+    transform: scale(1.15);
+
+    animation-delay: 2.5s, 4s;
+}
+
+.flower-4 {
+    right: 24%;
+
+    transform: scale(.9);
+
+    animation-delay: 3s, 4.5s;
+}
+
+.flower-5 {
+    right: 5%;
+
+    transform: scale(.72);
+
+    animation-delay: 3.5s, 5s;
+}
+
+
+/* Aparecer */
+
+@keyframes flowerAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(.1)
+            translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Movimiento */
+
+@keyframes sway {
+
+    0%,
+    100% {
+        rotate: -2deg;
+    }
+
+    50% {
+        rotate: 2deg;
+    }
+}
+
+
+/* =========================================
+   TALLOS
+========================================= */
+
+.stem {
+    position: absolute;
+
+    left: 61px;
+    bottom: 0;
+
+    width: 8px;
+    height: 250px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            to right,
+            #153d19,
+            #4c9c3e,
+            #153d19
+        );
+}
+
+
+/* =========================================
+   HOJAS
+========================================= */
+
+.leaf {
+    position: absolute;
+
+    width: 75px;
+    height: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #55a842,
+            #174d1d
+        );
+
+    border-radius:
+        100% 0
+        100% 0;
+}
+
+.leaf-left {
+    left: 0;
+    bottom: 90px;
+
+    transform: rotate(-25deg);
+}
+
+.leaf-right {
+    right: -5px;
+    bottom: 140px;
+
+    transform: rotate(205deg);
+}
+
+
+/* =========================================
+   CABEZA DE LA FLOR
+========================================= */
+
+.flower-head {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 130px;
+    height: 130px;
+
+    transform: translateX(-50%);
+}
+
+.petal {
+    position: absolute;
+
+    top: 38px;
+    left: 40px;
+
+    width: 52px;
+    height: 75px;
+
+    border-radius: 50%;
+
+    transform-origin:
+        26px 27px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff27a,
+            #f5c928
+        );
+
+    box-shadow:
+        0 0 15px rgba(255, 213, 52, .35);
+}
+
+.p1 {
+    transform:
+        rotate(0deg)
+        translateY(-35px);
+}
+
+.p2 {
+    transform:
+        rotate(60deg)
+        translateY(-35px);
+}
+
+.p3 {
+    transform:
+        rotate(120deg)
+        translateY(-35px);
+}
+
+.p4 {
+    transform:
+        rotate(180deg)
+        translateY(-35px);
+}
+
+.p5 {
+    transform:
+        rotate(240deg)
+        translateY(-35px);
+}
+
+.p6 {
+    transform:
+        rotate(300deg)
+        translateY(-35px);
+}
+
+
+/* Centro */
+
+.center {
+    position: absolute;
+
+    top: 39px;
+    left: 40px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #79500b,
+            #3d2604
+        );
+
+    box-shadow:
+        inset 0 0 10px #1d1100,
+        0 0 12px rgba(255, 200, 0, .25);
+}
+
+
+/* =========================================
+   BOTÓN DE CARTA
+========================================= */
+
+.letter-button {
+    position: absolute;
+
+    z-index: 50;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 13px 25px;
+
+    border: 1px solid rgba(255, 220, 100, .4);
+
+    border-radius: 50px;
+
+    background: rgba(10, 12, 30, .65);
+
+    color: #ffe477;
+
+    backdrop-filter: blur(10px);
+
+    transition: .4s;
+
+    animation:
+        buttonAppear 2s ease 5s both;
+}
+
+.letter-button:hover {
+    transform:
+        translateX(-50%)
+        translateY(-4px);
+
+    background:
+        rgba(255, 216, 61, .15);
+
+    box-shadow:
+        0 0 25px rgba(255, 216, 61, .2);
+}
+
+.letter-button span {
+    margin-left: 8px;
+}
+
+@keyframes buttonAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   CARTA
+========================================= */
+
+.letter-overlay {
     position: fixed;
+
     inset: 0;
-    z-index: 100;
+
+    z-index: 500;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
-    background: rgba(5, 6, 20, .75);
-    backdrop-filter: blur(8px);
+
+    padding: 20px;
+
+    background:
+        rgba(4, 5, 15, .78);
+
+    backdrop-filter: blur(10px);
+
     opacity: 0;
     visibility: hidden;
+
     transition: .5s;
 }
 
-.letter.show {
+.letter-overlay.show {
     opacity: 1;
     visibility: visible;
 }
 
-.letter-content {
+
+/* Papel */
+
+.letter {
     position: relative;
-    width: min(600px, 90%);
-    padding: 45px;
-    border-radius: 25px;
-    background: linear-gradient(
-        145deg,
-        #fffdf0,
-        #fff4bd
-    );
-    color: #3d310c;
+
+    width: min(600px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding:
+        45px
+        45px
+        40px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf0,
+            #fff5c9
+        );
+
+    color: #473a13;
+
     box-shadow:
-        0 20px 80px rgba(0, 0, 0, .5),
-        0 0 40px rgba(255, 216, 61, .2);
-    transform: scale(.8);
-    transition: .5s;
+        0 30px 100px rgba(0, 0, 0, .5);
+
+    transform:
+        translateY(50px)
+        scale(.9);
+
+    transition: .6s;
 }
 
-.letter.show .letter-content {
-    transform: scale(1);
+.letter-overlay.show .letter {
+    transform:
+        translateY(0)
+        scale(1);
 }
+
+
+/* Cerrar */
 
 .close {
     position: absolute;
-    right: 18px;
-    top: 12px;
-    background: none;
+
+    top: 10px;
+    right: 17px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #77621b;
+
     font-size: 30px;
-    color: #725c14;
 }
 
-.heart {
-    font-size: 45px;
+
+/* Decoración */
+
+.letter-decoration {
+    position: absolute;
+
+    top: 18px;
+    left: 25px;
+
+    color: #d1aa25;
+
+    font-size: 20px;
+}
+
+.letter-heart {
     text-align: center;
-    margin-bottom: 10px;
+
+    font-size: 45px;
+}
+
+.letter-small {
+    text-align: center;
+
+    color: #aa8c26;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
 }
 
 .letter h2 {
+    margin-top: 12px;
+
     text-align: center;
-    color: #c79b00;
-    font-size: 2rem;
-    margin-bottom: 20px;
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: 38px;
+
+    line-height: 1.1;
+
+    color: #b68a00;
+}
+
+.divider {
+    margin: 20px auto;
+
+    text-align: center;
+
+    color: #d1a922;
 }
 
 .letter p {
-    line-height: 1.7;
-    margin-bottom: 15px;
-    font-size: 1rem;
+    margin-bottom: 16px;
+
+    font-size: 15px;
+
+    line-height: 1.8;
 }
 
-.final-message {
+.final {
+    margin-top: 25px;
+
     text-align: center;
-    font-weight: bold;
-    font-size: 1.3rem !important;
-    color: #bd8d00;
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: 30px !important;
+
+    color: #b68a00;
 }
 
-/* =========================
+.signature {
+    margin-top: 25px;
+
+    text-align: right;
+
+    font-size: 13px;
+
+    color: #806b26;
+}
+
+.signature span {
+    font-family: "Dancing Script", cursive;
+
+    font-size: 25px;
+
+    color: #b68a00;
+}
+
+
+/* =========================================
    CORAZONES
-========================= */
+========================================= */
 
 .little-heart {
     position: fixed;
-    z-index: 200;
+
+    z-index: 900;
+
     pointer-events: none;
-    font-size: 25px;
-    animation: fly 2s ease-out forwards;
+
+    font-size: 24px;
+
+    animation:
+        heartFloat 2.5s ease-out forwards;
 }
 
-@keyframes fly {
+@keyframes heartFloat {
+
     0% {
-        transform: translateY(0) scale(.5);
         opacity: 1;
+
+        transform:
+            translate(0, 0)
+            scale(.5);
     }
 
     100% {
+        opacity: 0;
+
         transform:
             translate(
-                calc(-100px + 200px * var(--x)),
-                -250px
+                calc((var(--random-x) - .5) * 300px),
+                -300px
             )
-            scale(1.2);
-        opacity: 0;
+            rotate(20deg)
+            scale(1.3);
     }
 }
 
-/* =========================
-   CELULAR
-========================= */
+
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media (max-width: 700px) {
 
-    .message {
-        top: 5%;
+    .moon {
+        width: 70px;
+        height: 70px;
+
+        top: 7%;
+        right: 8%;
     }
 
-    .message h1 {
-        font-size: 2.2rem;
+    .main-message {
+        top: 7%;
     }
 
-    .message p:not(.small-text) {
-        font-size: .95rem;
+    .main-message h1 {
+        font-size: 3rem;
+    }
+
+    .description {
+        font-size: 13px;
+    }
+
+    .garden {
+        height: 55%;
     }
 
     .flower {
-        width: 80px;
-        height: 230px;
+        width: 90px;
+        height: 250px;
     }
 
     .flower-head {
-        transform: translateX(-50%) scale(.7);
+        transform:
+            translateX(-50%)
+            scale(.7);
     }
 
     .stem {
-        left: 38px;
-        height: 180px;
+        left: 41px;
+        height: 190px;
     }
 
     .flower-1 {
-        left: -5%;
+        left: -8%;
+        transform: scale(.65);
     }
 
     .flower-2 {
-        left: 18%;
+        left: 12%;
+        transform: scale(.75);
     }
 
     .flower-3 {
-        left: 40%;
+        left: 35%;
+        transform: scale(.85);
     }
 
     .flower-4 {
-        right: 15%;
+        right: 12%;
+        transform: scale(.75);
     }
 
     .flower-5 {
-        right: -5%;
+        right: -8%;
+        transform: scale(.65);
     }
 
-    .letter-content {
-        padding: 30px 25px;
+    .letter {
+        padding: 35px 25px;
+    }
+
+    .letter h2 {
+        font-size: 32px;
+    }
+
+    .letter p {
+        font-size: 14px;
+    }
+
+    .intro-heart {
+        font-size: 75px;
     }
 }

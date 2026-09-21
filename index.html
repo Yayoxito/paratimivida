@@ -1,39 +1,71 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>"Para ti <3"</title>
+
+    <title>Para ti 💛</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fuente romántica -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
 </head>
 
 <body>
-
-    <div class="stars"></div>
-
-    <main class="garden">
-
-        <div class="message">
-            <p class="small-text">Para la persona que hace mis días más bonitos...</p>
-
-            <h1>Estas flores son para ti 💛</h1>
-
-            <p>
-                Porque aunque unas flores amarillas pueden ser bonitas,
-                ninguna se compara con lo especial que eres para mí.
+    <section id="intro" class="intro">
+        <div class="intro-stars"></div>
+        <div class="intro-content">
+            <div class="intro-heart">♡</div>
+            <p class="intro-small">
+                Tengo algo que quiero enseñarte...
             </p>
-
-            <button id="loveButton">Tengo algo que decirte 💌</button>
+            <h1>
+                Para ti mi niña hermosa
+            </h1>
+            <p class="intro-description">
+                Hice algo pequeño, pero con mucho cariño.
+            </p>
+            <button id="startButton">
+                Abre tu regalo
+                <span>♡</span>
+            </button>
+            <p class="tap-message">
+                Toca el botón cuando estés lista
+            </p>
         </div>
-
-        <div class="flowers">
-
+    </section>
+    <main id="main" class="main">
+        <!-- Luna -->
+        <div class="moon"></div>
+        <!-- Estrellas -->
+        <div class="stars"></div>
+        <!-- Mensaje superior -->
+        <section class="main-message">
+            <p class="pre-title">
+                Hice este pequeño lugar para ti
+            </p>
+            <h1>
+                Porque te mereces<br>
+                un jardín entero 🌻
+            </h1>
+            <p class="description">
+                Y aunque estas flores son digitales,
+                todo lo que representan es muy real.
+            </p>
+        </section>
+        <section class="garden">
             <!-- Flor 1 -->
             <div class="flower flower-1">
                 <div class="stem"></div>
                 <div class="leaf leaf-left"></div>
                 <div class="leaf leaf-right"></div>
-
                 <div class="flower-head">
                     <div class="petal p1"></div>
                     <div class="petal p2"></div>
@@ -44,13 +76,11 @@
                     <div class="center"></div>
                 </div>
             </div>
-
             <!-- Flor 2 -->
             <div class="flower flower-2">
                 <div class="stem"></div>
                 <div class="leaf leaf-left"></div>
                 <div class="leaf leaf-right"></div>
-
                 <div class="flower-head">
                     <div class="petal p1"></div>
                     <div class="petal p2"></div>
@@ -61,10 +91,13 @@
                     <div class="center"></div>
                 </div>
             </div>
+
 
             <!-- Flor 3 -->
             <div class="flower flower-3">
+
                 <div class="stem"></div>
+
                 <div class="leaf leaf-left"></div>
                 <div class="leaf leaf-right"></div>
 
@@ -75,13 +108,18 @@
                     <div class="petal p4"></div>
                     <div class="petal p5"></div>
                     <div class="petal p6"></div>
+
                     <div class="center"></div>
                 </div>
+
             </div>
+
 
             <!-- Flor 4 -->
             <div class="flower flower-4">
+
                 <div class="stem"></div>
+
                 <div class="leaf leaf-left"></div>
                 <div class="leaf leaf-right"></div>
 
@@ -92,13 +130,18 @@
                     <div class="petal p4"></div>
                     <div class="petal p5"></div>
                     <div class="petal p6"></div>
+
                     <div class="center"></div>
                 </div>
+
             </div>
+
 
             <!-- Flor 5 -->
             <div class="flower flower-5">
+
                 <div class="stem"></div>
+
                 <div class="leaf leaf-left"></div>
                 <div class="leaf leaf-right"></div>
 
@@ -109,53 +152,99 @@
                     <div class="petal p4"></div>
                     <div class="petal p5"></div>
                     <div class="petal p6"></div>
+
                     <div class="center"></div>
                 </div>
+
             </div>
 
-        </div>
 
-        <div class="ground"></div>
+            <!-- Pasto -->
+            <div class="grass"></div>
+
+        </section>
+
+
+        <!-- Botón de carta -->
+
+        <button id="letterButton" class="letter-button">
+            Hay algo más para ti...
+            <span>💌</span>
+        </button>
 
     </main>
 
-    <!-- Carta -->
-    <div class="letter" id="letter">
+    <div id="letter" class="letter-overlay">
 
-        <div class="letter-content">
+        <div class="letter">
 
-            <button class="close" id="closeButton">×</button>
+            <button id="closeButton" class="close">
+                ×
+            </button>
 
-            <div class="heart">💛</div>
+            <div class="letter-decoration">
+                ✦
+            </div>
 
-            <h2>Para ti, mi amor</h2>
+            <div class="letter-heart">
+                💛
+            </div>
+
+            <p class="letter-small">
+                Una pequeña carta para ti
+            </p>
+
+            <h2>
+                Para la persona<br>
+                que hace mis días especiales
+            </h2>
+
+            <div class="divider">
+                ♥
+            </div>
 
             <p>
-                Quería regalarte flores amarillas, pero sentí que
-                simplemente darte unas flores no era suficiente.
+                Quería regalarte flores amarillas, pero pensé que
+                podía hacer algo diferente. Así que hice este pequeño
+                lugar para ti.
             </p>
 
             <p>
-                Así que decidí hacerte un pequeño rincón lleno de ellas,
-                para recordarte que siempre quiero encontrar una forma
-                de hacerte sonreír.
+                Puede que estas flores estén hechas con código,
+                pero cada palabra que puse aquí tiene un poquito
+                de lo que siento por ti.
             </p>
 
             <p>
-                Gracias por estar en mi vida, por cada momento juntos,
-                por las risas y por hacer que mis días sean mucho más
-                especiales.
+                Gracias por cada momento, cada risa, cada conversación
+                y por todas esas pequeñas cosas que hacen que estar
+                contigo sea tan bonito.
             </p>
 
-            <p class="final-message">
-                Te quiero muchísimo. 💛🌻
+            <p>
+                Espero que cuando veas estas flores recuerdes que
+                hay alguien que piensa en ti y que quiere seguir
+                creando momentos bonitos a tu lado.
             </p>
+
+            <p class="final">
+                Te quiero muchísimo.
+            </p>
+
+            <div class="signature">
+                Con mucho cariño,<br>
+                <span>Tu carazón de melon</span>
+            </div>
 
         </div>
 
     </div>
 
+
+    <!-- Contenedor de corazones -->
+
     <div id="hearts"></div>
+
 
     <script src="script.js"></script>
 
